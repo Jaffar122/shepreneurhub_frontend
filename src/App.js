@@ -1,5 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  useLocation,
+} from "react-router-dom";
+
 import Home from "./components/Home";
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
@@ -16,7 +23,9 @@ import {
   Logo,
   LogoImg,
   Container,
-  IconWrapper
+  IconWrapper,
+  Text,
+  LogoutButton,
 } from "./components/StyledComponents";
 import logoImage from "./logo.png";
 import CompaniesPage from "./components/CompaniesPage";
@@ -25,6 +34,7 @@ import { faBell } from '@fortawesome/free-solid-svg-icons';
 
 function CustomNavbar() {
   const location = useLocation();
+
 
   // Determine if the current route is the home page, login page, signup page, or form page
   const isHomePage = location.pathname === "/";
@@ -59,12 +69,18 @@ function CustomNavbar() {
         )}
         {!isHomePage && !isLoginPage && !isSignUpPage && !isFormPage && (
           <>
+            <Text>Welcome {localStorage.getItem("username")}</Text>
             <NavLink as={Link} to="/free-listing" >
               Free Listing
             </NavLink>
             <NavLink as={Link} to="/advertise" >
               Advertise
             </NavLink>
+            <LogoutButton onClick={()=>{
+              localStorage.removeItem("username");
+              localStorage.setItem("token", "");
+              window.location.href = "/";
+            }}>Logout</LogoutButton>
             <IconWrapper>
               <FontAwesomeIcon icon={faBell} />
             </IconWrapper>
@@ -91,13 +107,17 @@ function App() {
               </Container>
             }
           />
+
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/free-listing" element={<FreeListingForm />} />
           <Route path="/forget-password" element={<ForgetPassword />} />
           <Route path="/categories/:catid" element={<SubCategories />} />
-          <Route path="/categories/:catid/:subcatid" element={<CompaniesPage />} />
+          <Route
+            path="/categories/:catid/:subcatid"
+            element={<CompaniesPage />}
+          />
         </Routes>
       </div>
     </Router>

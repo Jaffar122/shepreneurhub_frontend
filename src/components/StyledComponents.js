@@ -150,6 +150,13 @@ export const NavLink = styled(Link)`
   }
 `;
 
+export const Text = styled.p`
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  cursor:pointer
+
+`;
 
 export const FreeListingContainer = styled.div`
   display: flex;
@@ -202,6 +209,12 @@ export const Button = styled.button`
   }
 `;
 
+export const FooterDesign = styled.div`
+  height: 40vh;
+  margin-top: 50px;
+  padding: 0 0px 0 130px;
+  background: linear-gradient(to right, #4b0082, #9370db);
+`;
 
 export const SearchContainer = styled.div`
   display: flex;
@@ -225,7 +238,20 @@ export const IconWrapper = styled.div`
   justify-content: center;
   margin-right: 5px;
   font-size: 1.5em;
+  margin-left:25px;
   color: white;
+`;
+
+export const LogoutButton = styled.p`
+  color: white;
+  padding: 5px 15px 8px 15px;
+  border-radius: 10px;
+  margin: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background: linear-gradient(to right, #fc6767, #f538a0);
+  }
 `;
 
 export const LocationDropdown = styled.select`
@@ -262,14 +288,6 @@ export const SearchButton = styled.button`
     background: linear-gradient(to right, #fc6767, #f538a0);
   }
 `;
-
-
-
-
-
-
-
-
 export const CarouselContainer = styled.div`
   display: flex;
   overflow-x: auto;
@@ -313,15 +331,15 @@ export const CardContent = styled.div`
 
 
 export const SubCategoryImageContainer = styled.div`
+  margin-top:40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 20px;
   padding: 20px;
 `;
 
 export const SubCategoryImageItem = styled.div`
-  width: 500px; /* Adjust the width as necessary */
+  width: 500px; 
   border: 1px solid #ddd;
   border-radius: 10px;
   text-align: center;
@@ -336,7 +354,7 @@ export const SubCategoryImageItem = styled.div`
 
 export const SubCategoryImageWrapper = styled.div`
   width: 100%;
-  height: 500px; /* Adjust the height as necessary */
+  height: 400px; 
   display: flex;
   align-items: center;
   justify-content: center;
